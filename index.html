@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
     <style>
-        #valor::before {
-            content:'$';
-        }
+      #valor::before {
+        content: '$';
+      }
     </style>
 
-
-    <title>Portal B4.js</title>
-</head>
-<body>
+    <title>Portal Tr4d3r</title>
+  </head>
+  <body>
     <div class="container">
-        <h1 class="text-center text-white bg-primary m-4 p-4 border border-5"> Valor da ação JS3 </h1>
-        
-        <h2 id="valor" class="text-center"></h2>
-        
-        <script src="https://cdn.socket.io/4.4.0/socket.io.js"></script>
+      <h1 class="text-center text-white bg-primary m-4 p-4 border border-5">
+        Valor da ação JS3
+      </h1>
 
-        <script>
-            var socket = io('ws://localhost:3000')
+      <h2 id="valor" class="text-center"></h2>
 
-            const elemento = document.querySelector("#valor")
+      <script src="https://cdn.socket.io/4.4.0/socket.io.js"></script>
 
+      <script>
+        var socket = io('ws://localhost:3000')
 
-            socket.on('cotação', valor => {
-                console.log(valor)
-                
-                var valorAntigo = elemento.textContent;
-            
-                if (valor > valorAntigo){
-                    elemento.classList.add("text-success")
-                    elemento.classList.remove("text-danger")
-                }
-                else {
-                    elemento.classList.add("text-danger")
-                    elemento.classList.remove("text-success")
-                }
+        const elemento = document.querySelector('#valor')
 
-                elemento.textContent = valor
+        socket.on('cotação', valor => {
+          console.log(valor)
 
+          var valorAntigo = elemento.textContent
 
-            })
+          if (valor > valorAntigo) {
+            elemento.classList.add('text-success')
+            elemento.classList.remove('text-danger')
+          } else {
+            elemento.classList.add('text-danger')
+            elemento.classList.remove('text-success')
+          }
 
-        </script>
-
+          elemento.textContent = valor
+        })
+      </script>
     </div>
-</body>
+  </body>
 </html>
